@@ -15,7 +15,6 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useSignInMutation } from "../../store/service/endpoint/auth.endpoint";
-
 const SignInPage = () => {
   const [fun, data] = useSignInMutation();
   console.log(data);

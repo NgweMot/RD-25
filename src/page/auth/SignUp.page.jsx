@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -10,12 +10,16 @@ import {
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
+import { useToast } from "../../components/ui/use-toast";
 import { Form, Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useSignUpMutation } from "../../store/service/endpoint/auth.endpoint";
 const SignUpPage = () => {
+  const { toast } = useToast();
+  const nav = useNavigate();
+
   const [fun, data] = useSignUpMutation();
   console.log(data);
   const initialValue = {
@@ -47,6 +51,16 @@ const SignUpPage = () => {
     // console.log(value);
     await fun(value);
   };
+  useEffect(() => {
+    if (data.error) {
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    } else if (data.data) {
+      nav("/");
+    }
+  }, [data]);
   return (
     <div className="w-3/5 h-screen mx-auto flex justify-center items-center">
       <Card className="basis-2/4 p-3">
