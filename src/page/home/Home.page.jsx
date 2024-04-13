@@ -33,9 +33,9 @@ const HomePage = () => {
           <EmptyBox />
         </div>
         <div>
-          <SheetTrigger asChild>
+          {/* <SheetTrigger asChild>
             <Button variant="outline">Open</Button>
-          </SheetTrigger>
+          </SheetTrigger> */}
           <SheetContent>
             <SheetHeader>
               <SheetTitle>Edit profile</SheetTitle>
