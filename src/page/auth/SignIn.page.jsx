@@ -33,7 +33,7 @@ const SignInPage = () => {
         }
     }, [data]);
     return (
-        <AuthGuard data={data}>
+        <AuthGuard check={data?.data?.success} token={data?.data?.token}>
             <div className="w-3/5 h-screen mx-auto flex justify-center items-center">
                 <Card className="basis-2/4 p-3">
                     <CardHeader className="flex flex-row justify-between mb-5">

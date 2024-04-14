@@ -15,10 +15,12 @@ import {
 } from "../../components/ui/sheet";
 import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
+import AuthGuard from "../../components/ui/guard/Auth.guard";
 
 const HomePage = () => {
   return (
-    <Sheet>
+   <AuthGuard>
+     <Sheet>
       <div>
         <NavComponent />
         <div className="h-20 px-52 mx-auto flex justify-end mt-5">
@@ -67,6 +69,7 @@ const HomePage = () => {
       </div>
     
     </Sheet>
+   </AuthGuard>
     
   );
 };
